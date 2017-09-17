@@ -8,6 +8,10 @@ namespace WpfNumericDataTypes
     /// </summary>
     public partial class MainWindow
     {
+        private const string Info = "Maximal value of {0} type: {1}\n" + 
+                                    "Minimal value of {0} type: {2}\n" + 
+                                    "Default value of {0} type: {3}";
+
         public MainWindow() => InitializeComponent();
 
         private void TypeSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -18,46 +22,44 @@ namespace WpfNumericDataTypes
                 switch (selectedType.Content.ToString())
                 {
                     case "int":
-                        Value.AppendText($"Maximal value of int type: {int.MaxValue}\n" +
-                                         $"Minimal value of int type: {int.MinValue}\n" +
-                                         $"Default value of int type: {default(int)}");
+                        Value.AppendText(
+                            string.Format(Info, "int",
+                            int.MaxValue, int.MinValue, default(int)));
                         break;
                     case "long":
-                        Value.AppendText($"Maximal value of long type: {long.MaxValue}\n" +
-                                         $"Minimal value of long type: {long.MinValue}\n" +
-                                         $"Default value of long type: {default(long)}");
+                        Value.AppendText(
+                            string.Format(Info, "long",
+                            long.MaxValue, long.MinValue, default(long)));
                         break;
                     case "float":
-                        Value.AppendText($"Maximal value of float type: {float.MaxValue}\n" +
-                                         $"Minimal value of float type: {float.MinValue}\n" +
-                                         $"Default value of float type: {default(float)}");
+                        Value.AppendText(
+                            string.Format(Info, "float",
+                            float.MaxValue, float.MinValue, default(float)));
                         break;
                     case "double":
-                        Value.AppendText($"Maximal value of double type: {double.MaxValue}\n" +
-                                         $"Minimal value of double type: {double.MinValue}\n" +
-                                         $"Default value of double type: {default(double)}");
+                        Value.AppendText(
+                            string.Format(Info, "double",
+                            double.MaxValue, double.MinValue, default(double)));
                         break;
                     case "decimal":
-                        Value.AppendText($"Maximal value of decimal type: {decimal.MaxValue}\n" +
-                                         $"Minimal value of decimal type: {decimal.MinValue}\n" +
-                                         $"Default value of decimal type: {default(decimal)}");
+                        Value.AppendText(
+                            string.Format(Info, "decimal",
+                            decimal.MaxValue, decimal.MinValue, default(decimal)));
                         break;
                     case "string":
-                        Value.AppendText("Maximal value of string type:\n" +
-                                         "\t1. Under the link https://msdn.microsoft.com/en-us/library/sx08afx2.aspx\n" +
-                                         "\t2. Or quick answer - 2 GB, or about 1 billion characters.\n" +
-                                         "Minimal value of string type: 0\n" +
-                                         "Default value of string type: empty string \"\"");
+                        Value.AppendText(
+                            string.Format(Info, "string",
+                            "2 GB, or about 1 billion characters", 0, "empty string \"\""));
                         break;
                     case "char":
-                        Value.AppendText($"Maximal value of char type: {(int) char.MaxValue}\n" +
-                                         $"Minimal value of char type: {(int) char.MinValue}\n" +
-                                         $"Default value of char type: {(int) default(char)}");
+                        Value.AppendText(
+                            string.Format(Info, "char",
+                            (int)char.MaxValue, (int)char.MinValue, (int)default(char)));
                         break;
                     case "bool":
-                        Value.AppendText($"Maximal value of int type: {true}\n" +
-                                         $"Minimal value of int type: {false}\n" +
-                                         $"Default value of int type: {default(bool)}");
+                        Value.AppendText(
+                            string.Format(Info, "bool",
+                            true, false, default(bool)));
                         break;
                 }
             }

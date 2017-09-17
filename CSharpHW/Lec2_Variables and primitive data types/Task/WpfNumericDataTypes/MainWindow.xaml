@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="WPF Numeric Data Types Information" Height="766" Width="1136.5">
+        Title="WPF Numeric Data Types Information" Height="593.5" Width="1136.5">
     <Grid>
         <Grid Margin="12,0,12,0">
             <Grid.RowDefinitions>
@@ -13,7 +13,7 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="40"  TextWrapping="Wrap" Text="Numeric Data Types" />
-            <Grid Margin="26,27,12,0" Grid.Row="1" Grid.RowSpan="2">
+            <Grid Margin="26,27,12,35" Grid.Row="1" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="*" />
@@ -26,7 +26,7 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="22" Text="Choose a data type" Height="29" Margin="-4,13,12,13" Width="186" />
                 <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="22" Text="Information" Height="29" Margin="108,13,123,13" Width="114" />
-                <ListBox x:Name="ChoosenType" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="292" FontSize="18" SelectionChanged="TypeSelectionChanged" Height="342" Margin="56,0,41,0">
+                <ListBox x:Name="ChoosenType" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="292" FontSize="18" SelectionChanged="TypeSelectionChanged" Height="232" Margin="54,0,38,0">
                     <ListBoxItem>int</ListBoxItem>
                     <ListBoxItem>long</ListBoxItem>
                     <ListBoxItem>float</ListBoxItem>
@@ -36,7 +36,7 @@
                     <ListBoxItem>char</ListBoxItem>
                     <ListBoxItem>bool</ListBoxItem>
                 </ListBox>
-                <RichTextBox x:Name="Value" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18" Width="670" Height="415" Margin="6,0"/>
+                <RichTextBox x:Name="Value" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="18" Width="670" Height="232" Margin="6,0"/>
                 <Button x:Name="Quit" Grid.Row="2" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,289,10"  FontSize="18" Width="90" Click="QuitClick" Content="Quit" />
             </Grid>
         </Grid>
