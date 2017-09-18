@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfRegisterForm
 {
@@ -30,14 +19,34 @@ namespace WpfRegisterForm
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bool isValid = true;
+            FNameText.BorderBrush = Brushes.GhostWhite;
+            FNameErrLabel.Visibility = Visibility.Hidden;
 
-            if (FNameText.Text.Length > 255 || !Regex.IsMatch(FNameText.Text, @"^[a-zA-Z]+$"))
+            LNameText.BorderBrush = Brushes.GhostWhite;
+            LNameErrLabel.Visibility = Visibility.Hidden;
+
+            BDateText.BorderBrush = Brushes.GhostWhite;
+            BDateErrLabel.Visibility = Visibility.Hidden;
+
+            EmailText.BorderBrush = Brushes.GhostWhite;
+            EmailErrLabel.Visibility = Visibility.Hidden;
+
+            PhoneNumberText.BorderBrush = Brushes.GhostWhite;
+            PhoneNumberErrLabel.Visibility = Visibility.Hidden;
+
+            AddInfoText.BorderBrush = Brushes.GhostWhite;
+            AddInfoErrLabel.Visibility = Visibility.Hidden;
+
+            GenderErrLabel.Visibility = Visibility.Hidden;
+            SuccesLabel.Visibility = Visibility.Hidden;
+
+            if (FNameText.Text.Length > 255 || !Regex.IsMatch(FNameText.Text, @"^[a-zA-ZА-Яа-яёЁ]+$"))
             {
                 FNameText.BorderBrush = Brushes.Red;
                 FNameErrLabel.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (LNameText.Text.Length > 255 || !Regex.IsMatch(LNameText.Text, @"^[a-zA-Z]+$"))
+            if (LNameText.Text.Length > 255 || !Regex.IsMatch(LNameText.Text, @"^[a-zA-ZА-Яа-яёЁ]+$"))
             {
                 LNameText.BorderBrush = Brushes.Red;
                 LNameErrLabel.Visibility = Visibility.Visible;
@@ -50,18 +59,12 @@ namespace WpfRegisterForm
                 BDateErrLabel.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if (EmailText.Text.Length > 255 && !Regex.IsMatch(EmailText.Text, @"^[a-zA-Z]+$"))
+            if (EmailText.Text.Length > 255 || !Regex.IsMatch(EmailText.Text, @"^[a-zA-Z]+@\w+\.com$"))
             {
-                try
-                {
-                    MailAddress m = new MailAddress(EmailText.Text);
-                }
-                catch (FormatException)
-                {
-                    FNameText.BorderBrush = Brushes.Red;
-                    FNameErrLabel.Visibility = Visibility.Visible;
-                    isValid = false;
-                }
+                EmailText.BorderBrush = Brushes.Red;
+                EmailErrLabel.Visibility = Visibility.Visible;
+                isValid = false;
+                
             }
             if (PhoneNumberText.Text.Length != 12 || !Regex.IsMatch(PhoneNumberText.Text, @"^[0-9]+$"))
             {
@@ -75,11 +78,14 @@ namespace WpfRegisterForm
                 AddInfoErrLabel.Visibility = Visibility.Visible;
                 isValid = false;
             }
-            if ((bool)GMaleRadBut.IsChecked || (bool)GFemaleRadBut.IsChecked)
+            if (!(bool)GMaleRadBut.IsChecked && !(bool)GFemaleRadBut.IsChecked)
             {
-                
+                GenderErrLabel.Visibility = Visibility.Visible;
             }
-            
+            if (isValid)
+            {
+                SuccesLabel.Visibility = Visibility.Visible;
+            }
 
         }
     }

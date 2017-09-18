@@ -1,0 +1,17 @@
+﻿<Window x:Class="WpGuessWord.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Guessing digit application" Height="350" Width="525">
+    <Grid>
+        <Button Content="Make a guess" HorizontalAlignment="Left" Margin="216,260,0,0" VerticalAlignment="Top" Width="82" Click="Button_Click"/>
+        <Label Content="The random digit is:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="51,128,0,0"/>
+        <Label x:Name="Message" Content="" HorizontalAlignment="Left" Margin="183,214,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.799,-0.459"/>
+        <Label Content="Lives remains:" HorizontalAlignment="Left" Margin="51,168,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Lives" Content="" HorizontalAlignment="Left" Margin="134,168,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Digit" HorizontalAlignment="Left" Height="23" Margin="178,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="66"/>
+
+    </Grid>
+</Window>

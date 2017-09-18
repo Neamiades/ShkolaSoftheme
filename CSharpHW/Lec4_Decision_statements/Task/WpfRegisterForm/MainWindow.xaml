@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Register Form" Height="591.27" Width="657.54">
+        Title="Register Form" Height="622.107" Width="657.54">
     <Grid>
-        <Button Content="Sign in" HorizontalAlignment="Left" Margin="305,532,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Sign in" HorizontalAlignment="Left" Margin="290,552,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Label Content="Enter your personal data" HorizontalAlignment="Left" Margin="265,10,0,0" VerticalAlignment="Top"/>
         <Label Content="First Name:" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
         <Label Content="Last Name:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
@@ -19,26 +19,17 @@
         <TextBox x:Name="LNameText" HorizontalAlignment="Left" Height="23" Margin="106,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="525"/>
         <TextBox x:Name="BDateText" HorizontalAlignment="Left" Height="23" Margin="107,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="524"/>
         <TextBox x:Name="EmailText" HorizontalAlignment="Left" Height="23" Margin="107,259,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="524"/>
-        <TextBox x:Name="PhoneNumberText" HorizontalAlignment="Left" Height="23" Margin="107,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="526" RenderTransformOrigin="0.5,0.5">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.181"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
+        <TextBox x:Name="PhoneNumberText" HorizontalAlignment="Left" Height="23" Margin="107,314,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="526" RenderTransformOrigin="0.5,0.5"/>
         <TextBox x:Name="AddInfoText" HorizontalAlignment="Left" Height="113" Margin="107,377,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="524"/>
         <RadioButton x:Name="GMaleRadBut" Content="Male" HorizontalAlignment="Left" Margin="107,207,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="GFemaleRadBut" Content="Female" HorizontalAlignment="Left" Margin="171,207,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="FNameErrLabel" Content="First name must contains only letters, length less than 255 symbols" HorizontalAlignment="Left" Margin="106,68,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="LNameErrLabel" Content="Last name must contains only letters, length less than 255 symbols" HorizontalAlignment="Left" Margin="105,121,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="BDateErrLabel" Content="Birth date name must contains only numbers, 0&lt;day&lt;32, 0&lt;month&lt;13, 1900&lt;year&lt;current year" HorizontalAlignment="Left" Margin="105,175,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="GenderErrLabel" Content="You need to choose male or female" HorizontalAlignment="Left" Margin="106,225,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="EmailErrLabel" Content="Email should contains @, length &lt; 255 symbols" HorizontalAlignment="Left" Margin="105,285,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="PhoneNumberErrLabel" Content="Phone number should contains only numbers, length = 12" HorizontalAlignment="Left" Margin="106,340,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label x:Name="AddInfoErrLabel" Content="Additional information must have length &lt; 2000 symbols" HorizontalAlignment="Left" Margin="106,498,0,0" VerticalAlignment="Top" Foreground="Red"/>
-        <Label Content="You are succefully registered" HorizontalAlignment="Left" Margin="182,526,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Label x:Name="FNameErrLabel" Content="First name must contains only letters, length less than 255 symbols" HorizontalAlignment="Left" Margin="106,68,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="LNameErrLabel" Content="Last name must contains only letters, length less than 255 symbols" HorizontalAlignment="Left" Margin="105,121,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="BDateErrLabel" Content="Birth date name must contains only numbers (dd/MM/yyyy), 0&lt;day&lt;32, 0&lt;month&lt;13, 1900&lt;year&lt;current year" HorizontalAlignment="Left" Margin="105,175,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="GenderErrLabel" Content="You need to choose male or female" HorizontalAlignment="Left" Margin="106,225,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="EmailErrLabel" Content="Email should contains @ and it must be correct, length &lt; 255 symbols" HorizontalAlignment="Left" Margin="105,285,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="PhoneNumberErrLabel" Content="Phone number should contains only numbers, length = 12" HorizontalAlignment="Left" Margin="106,340,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="AddInfoErrLabel" Content="Additional information must have length &lt; 2000 symbols" HorizontalAlignment="Left" Margin="106,498,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
+        <Label x:Name="SuccesLabel" Content="You are succefully registered" HorizontalAlignment="Left" Margin="244,521,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
     </Grid>
 </Window>
