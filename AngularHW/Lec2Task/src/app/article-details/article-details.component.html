@@ -1,0 +1,13 @@
+<div class="container">
+  <p>Стаття з рубрики {{heading}}</p>
+  <h1 (click)='changeColor()' [ngClass]="{clicks : isClicked === false}">{{ title }}</h1>
+  <div class="row">
+    <div class="col-md-3">
+        <p>{{shortDescription}}</p>
+        <div>
+            Зазначте рубрику:
+            <input type="text" size="40" [(ngModel)]="heading">
+        </div>
+    </div>
+  </div>
+</div>
