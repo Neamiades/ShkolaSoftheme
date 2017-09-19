@@ -1,0 +1,21 @@
+<div style="text-align:center">
+  <div>
+    <p>
+      <label>Статья из рубрики: </label>
+      {{heading}}
+    </p>
+  </div>
+  <div [style.color]="color" (click)="changeColor()">
+    <h1>
+      {{title}}
+    </h1>
+  </div>
+  <img width="300" src="https://www.logodesignlove.com/images/classic/apple-logo-rob-janoff-01.jpg">
+</div>
+<div>
+  <h3>{{shortDescription}}</h3>
+  <div>
+    <label>Укажите рубрику: </label>
+    <input [(ngModel)]="heading" placeholder="name">
+  </div>
+</div>
