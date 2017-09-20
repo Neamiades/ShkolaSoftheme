@@ -9,7 +9,6 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceRoot}/CSharpHW/Lec1_Intro/HW/HW/bin/Debug/netcoreapp1.1/HW.dll",
             "args": [],
             "cwd": "${workspaceRoot}/CSharpHW/Lec1_Intro/HW/HW",

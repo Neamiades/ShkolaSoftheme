@@ -8,7 +8,6 @@ namespace ConsoleCarCTORApp
         public string Brand { get; set; }
     }
 
-
     class Color
     {
         public string Name { get; set; }
@@ -36,12 +35,12 @@ namespace ConsoleCarCTORApp
 
     static class CarConstructor
     {
-        private static readonly Engine _bestEngine = new Engine { Type = "Electro", Brand = "BMV" };
+        private static readonly Engine BestEngine = new Engine { Type = "Electro", Brand = "BMV" };
 
         public static Car Construct(Engine e, Color c, Transmission t) => new Car {Engine = e, Color = c, Transmission = t};
         public static Car Reconstruct(Car car, Engine engine = null)
         {
-            car.Engine = engine ?? _bestEngine;
+            car.Engine = engine ?? BestEngine;
             return car;
         }
     }

@@ -5,9 +5,7 @@ namespace ConsoleShapeDesc
 {
     class ShapeDescriptor
     {
-        private List<Point> _points;
-
-        //public ShapeDescriptor() => ShapeType = "Void";
+        private readonly List<Point> _points;
 
         public ShapeDescriptor(Point p)
         {
@@ -61,15 +59,17 @@ namespace ConsoleShapeDesc
     {
         static void Main()
         {
-            var shape1 = new ShapeDescriptor(new Point(1, 1));
-            var shape2 = new ShapeDescriptor(new Point(1, 1), new Point(2, 2));
-            var shape3 = new ShapeDescriptor(new Point(1, 1), new Point(2, 2), new Point(3, 9));
-            var shape4 = new ShapeDescriptor(new Point(1, 1), new Point(2, 2), new Point(3, 9), new Point(0, 0));
-
-            shape1.TellAbout();
-            shape2.TellAbout();
-            shape3.TellAbout();
-            shape4.TellAbout();
+            var shapes = new[]
+            {
+                new ShapeDescriptor(new Point(1, 1)),
+                new ShapeDescriptor(new Point(1, 1), new Point(2, 2)),
+                new ShapeDescriptor(new Point(1, 1), new Point(2, 2), new Point(3, 9)),
+                new ShapeDescriptor(new Point(1, 1), new Point(2, 2), new Point(3, 9), new Point(0, 0))
+            };
+            foreach(var shape in shapes)
+            {
+                shape.TellAbout();
+            }
         }
     }
 }
