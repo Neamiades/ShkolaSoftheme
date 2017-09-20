@@ -13,18 +13,12 @@ namespace ConsoleHuman
         public string BirthDate { get; set; }
         public uint   Age       { get; }
 
-        //В том случае, если в задании имелась ввиду еквивалентность по значениям полей,
-        //иначе в Object уже есть метод Equals, который можно даже переопределить.
         public bool Eq(Human otherHuman)
         {
-            if (otherHuman.FirstName == FirstName
-                && otherHuman.Lastame == Lastame
-                && otherHuman.BirthDate == BirthDate
-                && otherHuman.Age == Age)
-            {
-                return true;
-            }
-            return false;
+            return (otherHuman.FirstName == FirstName
+                    && otherHuman.Lastame == Lastame
+                    && otherHuman.BirthDate == BirthDate
+                    && otherHuman.Age == Age);
         }
     }
 

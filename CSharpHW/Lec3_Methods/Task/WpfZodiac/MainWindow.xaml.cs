@@ -75,19 +75,30 @@ namespace WpfZodiac
             switch (pos)
             {
                 case 0:
-                    if (date.Length == 3 && date[pos].Length == 2 && int.TryParse(date[pos], out int day) && (day > 0 && day < 32))
-                        return ValidDate(date, ++pos);
+                    if ((date.Length == 3 && date[pos].Length == 2)
+                        && int.TryParse(date[pos], out int day)
+                        && (day > 0 && day < 32))
+                        {
+                            return ValidDate(date, ++pos);
+                        }
                     return null;
                 case 1:
-                    if (date[pos].Length == 2 && int.TryParse(date[pos], out int month) && (month > 0 && month < 13))
-                        return ValidDate(date, ++pos);
+                    if (date[pos].Length == 2
+                        && int.TryParse(date[pos], out int month)
+                        && (month > 0 && month < 13))
+                        {
+                            return ValidDate(date, ++pos);
+                        }
                     return null;
                 case 2:
                     if (date[pos].Length == 4
                         && int.TryParse(date[pos], out int year)
                         && (year > 0 && year <= DateTime.Today.Year))
                     {
-                        var resDate = DateTime.ParseExact(string.Join("/", date), "dd/MM/yyyy", Culture, DateTimeStyles.AssumeLocal);
+                        var resDate = DateTime.ParseExact(
+                            string.Join("/", date),
+                            "dd/MM/yyyy",
+                            Culture, DateTimeStyles.AssumeLocal);
                         if (resDate <= DateTime.Today)
                             return resDate;
                     }
