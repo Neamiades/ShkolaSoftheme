@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsolePrintApp", "ConsolePrintApp\ConsolePrintApp.csproj", "{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleExtensions", "ConsoleExtensions\ConsoleExtensions.csproj", "{A51AFE6D-1AA4-4053-A3E1-9B31E079E727}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5} = {FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF27EF61-BC3E-4C14-B8F9-4429430BA8A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A51AFE6D-1AA4-4053-A3E1-9B31E079E727}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A51AFE6D-1AA4-4053-A3E1-9B31E079E727}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A51AFE6D-1AA4-4053-A3E1-9B31E079E727}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A51AFE6D-1AA4-4053-A3E1-9B31E079E727}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61CB16E9-F772-4B53-8548-CA0FC15F3171}
+	EndGlobalSection
+EndGlobal
