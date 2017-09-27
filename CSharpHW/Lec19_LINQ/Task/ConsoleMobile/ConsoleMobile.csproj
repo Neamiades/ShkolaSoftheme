@@ -46,7 +46,6 @@
     <Compile Include="CallData.cs" />
     <Compile Include="MessageData.cs" />
     <Compile Include="MobileAccount.cs" />
-    <Compile Include="MobileOperation.cs" />
     <Compile Include="MobileOperator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
