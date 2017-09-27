@@ -37,7 +37,29 @@ namespace ConsoleMobile
             MakeCalls(mobileOperator, mobileOperator.Accounts);
 
             SendMessages(mobileOperator, mobileOperator.Accounts);
+
+            var (topCalledAccs, topActiveAccs) = mobileOperator.GetTopFives();
+
+            PrintTopList(topCalledAccs, topActiveAccs);
         }
+
+        private static void PrintTopList(IEnumerable<TopAcc> topCalledAccs, IEnumerable<TopAcc> topActiveAccs)
+        {
+            WriteLine("5 most frequently called numbers:");
+            foreach (var number in topCalledAccs)
+            {
+                WriteLine($"Abonent: {number.Name}, Number: {number.Number}, Count: {number.Count}");
+            }
+            WriteLine();
+
+            WriteLine("5 most active abonents by SMS and calls (SMS message as 0.5 call):");
+            foreach (var number in topActiveAccs)
+            {
+                WriteLine($"Abonent: {number.Name}, Number: {number.Number}, Total Score: {number.Count}");
+            }
+            WriteLine();
+        }
+
         private static List<MobileAccount> GetAccaunts()
         {
             return new List<MobileAccount>
