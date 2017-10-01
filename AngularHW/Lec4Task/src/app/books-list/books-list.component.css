@@ -1,0 +1,11 @@
+img {
+    height: 208px;
+}
+
+a {
+    color: black
+}
+
+a:hover {
+    cursor: pointer;
+}
