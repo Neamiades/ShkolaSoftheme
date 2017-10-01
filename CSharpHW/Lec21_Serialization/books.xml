@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ArrayOfBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Book xsi:type="FictionBook">
+    <Name>Moon</Name>
+    <Author>Gerald</Author>
+    <Status>InStock</Status>
+    <Genre>Ballad</Genre>
+  </Book>
+  <Book xsi:type="FictionBook">
+    <Name>Sun</Name>
+    <Author>Forman</Author>
+    <Status>InStock</Status>
+    <Genre>Poem</Genre>
+  </Book>
+  <Book xsi:type="StudyBook">
+    <Name>Basics</Name>
+    <Author>Gerald</Author>
+    <Status>InStock</Status>
+    <Subject>Physic</Subject>
+  </Book>
+  <Book xsi:type="StudyBook">
+    <Name>Middle program</Name>
+    <Author>Frodo</Author>
+    <Status>InStock</Status>
+    <Subject>Physic</Subject>
+  </Book>
+  <Book xsi:type="StudyBook">
+    <Name>Electricity</Name>
+    <Author>Ann</Author>
+    <Status>InStock</Status>
+    <Subject>Physic</Subject>
+  </Book>
+  <Book xsi:type="ScienceBook">
+    <Name>1+2</Name>
+    <Author>Fess</Author>
+    <Status>InStock</Status>
+    <ResearchTheme>Integrals</ResearchTheme>
+  </Book>
+</ArrayOfBook>

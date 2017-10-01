@@ -1,0 +1,7 @@
+1. Create a WPF application for displaying MIN, MAX and DEFAULT values of known C# Numeric Data Types.
+2. Create calculator console application. Calculator should support basic operations with double type.
+   The result should be displayed with two digits after the decimal point.
+
+1. Create a console application for displaying MIN, MAX and DEFAULT values of known C# Numeric Data Types.
+2. Create calculator a WPF application. Calculator should support basic operations with double type.
+   The result should be displayed with two digits after the decimal point. 
