@@ -1,0 +1,19 @@
+img {
+  width:  159px;
+  height: 159px;
+}
+
+a {
+  color: black
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+h3 {
+  color: magenta
+}
+button {
+  background: red
+}

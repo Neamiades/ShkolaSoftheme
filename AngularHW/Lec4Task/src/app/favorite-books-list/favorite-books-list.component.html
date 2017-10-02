@@ -1,0 +1,19 @@
+<h3>{{ favoriteMessage }}</h3>
+<div class="row">
+  <div class="col-md-6" *ngFor="let favorite of favorites$ | async">
+    <div class="thumbnail">
+      <img [src]="favorite.bookImageUrl">
+      <div class="caption">
+        <h4 myHighlight="cyan">
+          <a>{{ favorite.bookTitle }}</a>
+        </h4>
+        <!-- <button class="btn btn-primary" data-ng-click="delFavorite(favorite.bookId)">
+          Delete from favorite
+        </button> -->
+        <button class="btn btn-primary center-block" (click)="onDelFavorite(favorite.bookId)">
+          Delete from favorite
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

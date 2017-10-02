@@ -9,6 +9,8 @@ import { UnlessDirective } from './directives/unless.directive';
 import { BytesPipe } from './pipes/bytes.pipe';
 import { HttpModule } from '@angular/http';
 import { BooksService } from './services/books.service';
+import { FavoriteBooksService } from './services/favorite-books.service';
+import { FavoriteBooksListComponent } from './favorite-books-list/favorite-books-list.component';
 
 @NgModule({
     declarations: [
@@ -17,13 +19,14 @@ import { BooksService } from './services/books.service';
         FavoriteComponent,
         HighlightDirective,
         UnlessDirective,
-        BytesPipe
+        BytesPipe,
+        FavoriteBooksListComponent
     ],
     imports: [
         BrowserModule,
         HttpModule
     ],
-    providers: [BooksService],
+    providers: [BooksService, FavoriteBooksService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
