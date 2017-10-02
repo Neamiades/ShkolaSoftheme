@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Net.Mime;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 
 namespace ConsoleMobile
 {
@@ -15,9 +12,10 @@ namespace ConsoleMobile
         public event EventHandler<CallData>    CallExecutor;
         public event EventHandler<MessageData> MessageExecutor;
 
-        public bool ContainAccounts { get; }
+        public bool ContainAccounts { get; private set; }
 
         public           List <MobileAccount> Accounts;
+
         private readonly List<CallData>       _callHistory;
         private readonly List<MessageData>    _messageHistory;
 
@@ -25,6 +23,11 @@ namespace ConsoleMobile
         {
             _callHistory = new List<CallData>();
             _messageHistory = new List<MessageData>();
+            LoadAccounts(storageType);
+        }
+
+        private void LoadAccounts(StorageType storageType)
+        {
             try
             {
                 if (storageType == StorageType.BinaryInZip)
@@ -57,6 +60,71 @@ namespace ConsoleMobile
                 Console.WriteLine("The mobile operator doesn't contain any accounts at this moment, try later");
             }
         }
+
+        private void CompressAndSave()
+        {
+            using (var ms = new MemoryStream())
+            {
+                ProtoBuf.Serializer.Serialize(ms, Accounts);
+                using (var fs = new FileStream("Accounts.zip", FileMode.OpenOrCreate))
+                {
+                    using (ZipArchive archive = new ZipArchive(fs, ZipArchiveMode.Create, false))
+                    {
+                        var zipEntry = archive.CreateEntry("Accounts.bin");
+                        using (var zipEntryStream = zipEntry.Open())
+                        {
+                            ms.Position = 0;
+                            ms.CopyTo(zipEntryStream);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void DecompresAndLoad()
+        {
+            using (ZipArchive archive = ZipFile.OpenRead("Accounts.zip"))
+            {
+                var zipEntry = archive.GetEntry("Accounts.bin");
+                using (var zipEntryStream = zipEntry.Open())
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        zipEntryStream.CopyTo(ms);
+                        ms.Position = 0;
+                        Accounts = ProtoBuf.Serializer.Deserialize<List<MobileAccount>>(ms);
+                    }
+                }
+            }
+        }
+
+        private static void LogErr(Exception ex)
+        {
+            using (var sw = new StreamWriter("ErrorsLog.txt", append: true))
+            {
+                sw.Write($"\n\n#{DateTime.Now} - {ex.Message}\n");
+            }
+        }
+
+        private void Serialize()
+        {
+            using (FileStream fs = new FileStream("Accounts.xml", FileMode.Create))
+            {
+                new DataContractSerializer(typeof(List<MobileAccount>)).WriteObject(fs, Accounts);
+            }
+        }
+
+        private void Deserialize()
+        {
+            using (FileStream fs = new FileStream("Accounts.xml", FileMode.Open))
+            {
+                Accounts = (List<MobileAccount>)new DataContractSerializer(typeof(List<MobileAccount>)).ReadObject(fs);
+            }
+        }
+
+        private void OnCallExecutor(CallData data) => CallExecutor?.Invoke(this, data);
+
+        private void OnMessageExecutor(MessageData data) => MessageExecutor?.Invoke(this, data);
 
         public (IEnumerable<TopAcc>, IEnumerable<TopAcc>) GetTopFives()
         {
@@ -132,71 +200,6 @@ namespace ConsoleMobile
             _messageHistory.Add(data);
             OnMessageExecutor(data);
         }
-
-        private void CompressAndSave()
-        {
-            using (var ms = new MemoryStream())
-            {
-                ProtoBuf.Serializer.Serialize(ms, Accounts);
-                using (var fs = new FileStream("Accounts.zip", FileMode.OpenOrCreate))
-                {
-                    using (ZipArchive archive = new ZipArchive(fs, ZipArchiveMode.Create, false))
-                    {
-                        var zipEntry = archive.CreateEntry("Accounts.bin");
-                        using (var zipEntryStream = zipEntry.Open())
-                        {
-                            ms.Position = 0;
-                            ms.CopyTo(zipEntryStream);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void DecompresAndLoad()
-        {
-            using (ZipArchive archive = ZipFile.OpenRead("Accounts.zip"))
-            {
-                var zipEntry = archive.GetEntry("Accounts.bin");
-                using (var zipEntryStream = zipEntry.Open())
-                {
-                    using (var ms = new MemoryStream())
-                    {
-                        zipEntryStream.CopyTo(ms);
-                        ms.Position = 0;
-                        Accounts = ProtoBuf.Serializer.Deserialize<List<MobileAccount>>(ms);
-                    }
-                }
-            }
-        }
-
-        private static void LogErr(Exception ex)
-        {
-            using (var sw = new StreamWriter("ErrorsLog.txt", append: true))
-            {
-                sw.Write($"\n\n#{DateTime.Now} - {ex.Message}\n");
-            }
-        }
-
-        private void Serialize()
-        {
-            using (FileStream fs = new FileStream("Accounts.json", FileMode.Create))
-            {
-                new DataContractJsonSerializer(typeof(List<MobileAccount>)).WriteObject(fs, Accounts);
-            }
-        }
-
-        private void Deserialize()
-        {
-            using (FileStream fs = new FileStream("Accounts.json", FileMode.Open))
-            {
-                Accounts = (List<MobileAccount>)new DataContractJsonSerializer(typeof(List<MobileAccount>)).ReadObject(fs);
-            }
-        }
-
-        private void OnCallExecutor(CallData data) => CallExecutor?.Invoke(this, data);
-
-        private void OnMessageExecutor(MessageData data) => MessageExecutor?.Invoke(this, data);
 
         public void Dispose()
         {
