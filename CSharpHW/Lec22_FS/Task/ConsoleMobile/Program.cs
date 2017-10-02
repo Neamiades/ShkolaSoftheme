@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using static System.Console;
 
 namespace ConsoleMobile
@@ -26,7 +27,7 @@ namespace ConsoleMobile
 
         static void Main()
         {
-            using (var mobileOperator = new MobileOperator())
+            using (var mobileOperator = new MobileOperator(StorageType.Xml))
             {
                 if (mobileOperator.ContainAccounts)
                 {

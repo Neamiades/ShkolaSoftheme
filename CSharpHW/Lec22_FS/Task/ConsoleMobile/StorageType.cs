@@ -3,7 +3,7 @@
     enum StorageType
     {
         None,
-        Json,
+        Xml,
         BinaryInZip
     }
 }

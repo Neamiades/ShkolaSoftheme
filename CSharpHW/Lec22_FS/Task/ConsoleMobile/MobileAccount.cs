@@ -1,9 +1,11 @@
 ﻿using System;
-using static System.Console;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Text.RegularExpressions;
 using ProtoBuf;
+using System.Text.RegularExpressions;
+
+using static System.Console;
+
 using TelNum = System.String;
 using AbonentName = System.String;
 
@@ -11,18 +13,16 @@ namespace ConsoleMobile
 {
     [ProtoContract]
     [DataContract]
-    [KnownType(typeof(Regex))]
     class MobileAccount
     {
-        [DataMember]
         [ProtoMember(1)]
         private static readonly Regex Regex = new Regex(@"^\+380\d{3}\d{2}\d{2}\d{2}$");
 
-        [DataMember]
+        [DataMember(Name = "PhoneBook")]
         [ProtoMember(2)]
         public Dictionary<TelNum, AbonentName> PhoneBook;
 
-        [DataMember]
+        [DataMember(Name = "Number")]
         [ProtoMember(3)]
         private string _number;
 
@@ -42,7 +42,7 @@ namespace ConsoleMobile
             }
         }
 
-        [DataMember]
+        [DataMember(Name = "AbonentName")]
         [ProtoMember(4)]
         public AbonentName AbonentName { get; set; }
 
