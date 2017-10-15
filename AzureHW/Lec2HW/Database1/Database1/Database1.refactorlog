@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="072dd325-469d-470d-91e8-9d9de28e6194" ChangeDateTime="10/15/2017 13:38:10">
+    <Property Name="ElementName" Value="[dbo].[Phones].[Brand]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BrandID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ad4c6a0b-1b5e-4d36-9e6b-547856a0a5f0" ChangeDateTime="10/15/2017 13:44:54">
+    <Property Name="ElementName" Value="[dbo].[Phones].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PhoneId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="18f90563-f20e-4157-bbb8-c40a10eac714" ChangeDateTime="10/15/2017 13:44:59">
+    <Property Name="ElementName" Value="[dbo].[Phones].[BrandID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BrandId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e2cc0565-2e3f-4e7d-8b38-3c8089fda6c1" ChangeDateTime="10/15/2017 13:45:01">
+    <Property Name="ElementName" Value="[dbo].[Brands].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Brands]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="BrandId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fddb84b3-bd29-4203-ba93-893e708b6ff9" ChangeDateTime="10/15/2017 13:48:11">
+    <Property Name="ElementName" Value="[dbo].[Brands].[R]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Brands]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Rating" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b7b8ab09-0721-4a7c-9822-a8e14fddeee5" ChangeDateTime="10/15/2017 13:49:04">
+    <Property Name="ElementName" Value="[dbo].[Phones].[ParamsID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Phones]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamsId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c53db220-d4ef-4b36-9eed-c0deb964018c" ChangeDateTime="10/15/2017 13:49:10">
+    <Property Name="ElementName" Value="[dbo].[Params].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Params]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ParamsId" />
+  </Operation>
+</Operations>
