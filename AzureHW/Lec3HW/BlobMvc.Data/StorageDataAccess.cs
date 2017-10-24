@@ -3,7 +3,6 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Collections.Concurrent;
 using System.Linq;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure.Storage;
@@ -50,72 +49,36 @@ namespace BlobMvc.Data
 
         public static void ParallelUpload(byte[] file, string fileName, int blockSize = BlockSize)
         {
-            throw new NotImplementedException();
-            //CloudBlockBlob blob = CloudBlobContainer.GetBlockBlobReference(Path.GetFileName(fileName));
-            
-            //blob.DeleteIfExists();
-            
-            //var blockIDs = new ConcurrentBag<string>();
-            //var stack = new ConcurrentStack<int>();
+            CloudBlockBlob blob = CloudBlobContainer.GetBlockBlobReference(Path.GetFileName(fileName));
 
-            //int fileSize = file.Length;
-            //int tasksCount = (int)Math.Ceiling((double) fileSize / blockSize);
-            //for (int i = tasksCount - 1; i >= 0; i--)
-            //{
-            //    stack.Push(i);
-            //}
-            //var tasks = new Task[tasksCount];
-            //for (int i = 0; i < tasksCount; i++)
-            //{
-            //    tasks[i] = Task.Factory.StartNew(() =>
-            //    {
-            //        stack.TryPop(out int blockId);
-            //        int byteIdx = blockId * blockSize;
-            //        int blockLength = Math.Min(blockSize, fileSize - byteIdx);
+            blob.DeleteIfExists();
 
+            int fileSize = file.Length;
+            int tasksCount = (int)Math.Ceiling((double)fileSize / blockSize);
+            var blockIDs = new string[tasksCount];
+            var blobReqOpt = new BlobRequestOptions { RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(2), 1) };
 
-            //        byte[] bytesToUpload = new byte[blockLength];
-            //        Array.Copy(file, byteIdx, bytesToUpload, 0, blockLength);
+            blockSize = Math.Min(blockSize, fileSize);
 
-            //        var blockIdEncoded = Convert.ToBase64String(BitConverter.GetBytes((int)blockId));
+            Parallel.For(0, tasksCount, blockId =>
+            {
+                int byteIdx = blockId * blockSize;
+                int blockLength = Math.Min(blockSize, fileSize - byteIdx);
 
-            //        using (MemoryStream memoryStream = new MemoryStream(bytesToUpload, 0, blockLength))
-            //        {
-            //            lock (blob)
-            //            {
-            //                blockIDs.Add(blockIdEncoded);
-            //                blob.PutBlock(blockIdEncoded, memoryStream, null, null, new BlobRequestOptions
-            //                {
-            //                    RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(2), 1)
-            //                });
-            //            }
-            //        }
+                string blockIdEncoded = GetBase64BlockId(blockId);
 
-            //    });
-            //}
-            //Task.WaitAll(tasks);
-            //Parallel.ForEach(stack, blockId => 
-            //{
-            //    int byteIdx = blockId * blockSize;
-            //    int blockLength = Math.Min(blockSize, fileSize - byteIdx);
+                byte[] bytesToUpload = new byte[blockLength];
+                Array.Copy(file, byteIdx, bytesToUpload, 0, blockLength);
 
-            //    string blockIdEncoded = GetBase64BlockId(blockId);
-
-            //    byte[] bytesToUpload = new byte[blockLength];
-            //    Array.Copy(file, byteIdx, bytesToUpload, 0, blockLength);
-
-            //    using (MemoryStream memoryStream = new MemoryStream(bytesToUpload, 0, blockLength))
-            //    {
-            //        lock (blob)
-            //        {
-            //            blockIDs.Add(blockIdEncoded);
-            //            blob.PutBlock(blockIdEncoded, memoryStream, null, null, new BlobRequestOptions
-            //            {
-            //                RetryPolicy = new ExponentialRetry(TimeSpan.FromSeconds(2), 1)
-            //            });
-            //        }
-            //    }
-            //});
+                using (MemoryStream memoryStream = new MemoryStream(bytesToUpload, 0, blockLength))
+                {
+                    lock (blob)
+                    {
+                        blockIDs[blockId] = blockIdEncoded;
+                        blob.PutBlock(blockIdEncoded, memoryStream, null, null, blobReqOpt);
+                    }
+                }
+            });
 
             blob.PutBlockList(blockIDs);
         }

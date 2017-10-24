@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob>  
+
+@{
     ViewBag.Title = "Home Page";
 }
 <div class="container">
@@ -8,7 +10,7 @@
             <br />
 
             <div id="blobs" style="margin: 10px;">
-                @Html.Action("GetBlobList", "Home")
+                @Html.Partial("_Blobs", Model)
             </div>
             <img src="http://www.j-detali.ru/bitrix/templates/main_20/img/loader-gears.gif" id="loader" style="display: none; position: absolute; top: 50%; left: 50%;" />
 
