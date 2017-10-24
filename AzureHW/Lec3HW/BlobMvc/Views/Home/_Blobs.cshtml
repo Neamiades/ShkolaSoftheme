@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob>  
+
+<table class="table  table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>File name</th>
+        <th>Simple download link</th>
+        <th>Parallel download link</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                <a href="@Url.Action("Download", new {blobName = item.Name})" class="btn btn-success">Download</a>
+            </td>
+            <td>
+                <a href="@Url.Action("DownloadInParallel", new {blobName = item.Name})" class="btn btn-success">Download</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
